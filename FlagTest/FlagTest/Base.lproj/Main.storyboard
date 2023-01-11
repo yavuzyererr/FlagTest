@@ -60,7 +60,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 <connections>
-                                                    <action selector="secenek4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QBg-aW-2pe"/>
+                                                    <action selector="secenek4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmO-dU-MCX"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -90,8 +90,8 @@
                         <outlet property="answer1" destination="VA5-lG-3Iq" id="Dym-rC-0jV"/>
                         <outlet property="answer2" destination="Dcp-RE-iRD" id="aOM-rB-zAy"/>
                         <outlet property="answer3" destination="jc2-WD-Y1O" id="6CG-fH-pZm"/>
+                        <outlet property="flag" destination="Ood-LD-T1c" id="TZq-2v-VKz"/>
                         <outlet property="flagView" destination="Ood-LD-T1c" id="lce-Rh-j3F"/>
-                        <outlet property="lblQuestion" destination="lz0-EY-ZFb" id="HST-YS-5KC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

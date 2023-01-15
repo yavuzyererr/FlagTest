@@ -8,25 +8,41 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var flagView: UIImageView!
     @IBOutlet weak var aOption: UIButton!
     @IBOutlet weak var bOption: UIButton!
     @IBOutlet weak var cOption: UIButton!
     @IBOutlet weak var dOption: UIButton!
+    @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var ProgressView: UIProgressView!
     
-    var flagArrays = [#imageLiteral(resourceName: "Ireland") , #imageLiteral(resourceName: "Italy") , #imageLiteral(resourceName: "Nigeria") , #imageLiteral(resourceName: "France") , #imageLiteral(resourceName: "Poland") , #imageLiteral(resourceName: "Germany") , #imageLiteral(resourceName: "Spain") , #imageLiteral(resourceName: "Us") , #imageLiteral(resourceName: "Estonia") , #imageLiteral(resourceName: "Turkey") , #imageLiteral(resourceName: "Russia")]
+    var currentQuestion : Question?
+    var currentQuestionPozisyon = 0
+    var noCorrect = 0
     
-
-    
-    
-    
-    struct Question {
-        var question : String
-        var answers : [String]
-        var correctAnswer : Int
-        var images : UIImage
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setQuestion()
     }
     
+    @IBAction func secenek1(_ sender: UIButton) {
+        checkAnswer(userAnswer: sender.currentTitle!)
+        
+    }
+    @IBAction func secenek2(_ sender: UIButton) {
+        checkAnswer(userAnswer: sender.currentTitle!)
+    }
+    @IBAction func secenek3(_ sender: UIButton) {
+        checkAnswer(userAnswer: sender.currentTitle!)
+    }
+    
+    @IBAction func secenek4(_ sender: UIButton) {
+        checkAnswer(userAnswer: sender.currentTitle!)
+    }
+    
+    
+   
     let questions = [
         Question(question: "Yukarıdaki bayrak aşağıdaki ülkelerin hangisinin bayrağıdır",
                  answers: ["Türkiye", "Estonya", "Filistin","Almanya"] ,
@@ -75,42 +91,12 @@ class ViewController: UIViewController {
                  images: #imageLiteral(resourceName: "Us") )
     ]
     
-    var currentQuestion: Question?
-    var currentQuestionPozisyon = 0
-    var noCorrect = 0
-    
-    @IBOutlet weak var answer0: UIButton!
-    @IBOutlet weak var answer1: UIButton!
-    @IBOutlet weak var answer2: UIButton!
-    @IBOutlet weak var answer3: UIButton!
-    @IBOutlet weak var flag: UIImageView!
-    
-    @IBAction func secenek1(_ sender: UIButton) {
-        checkAnswer(userAnswer: sender.currentTitle!)
-        
-    }
-    @IBAction func secenek2(_ sender: UIButton) {
-        checkAnswer(userAnswer: sender.currentTitle!)
-    }
-    @IBAction func secenek3(_ sender: UIButton) {
-        checkAnswer(userAnswer: sender.currentTitle!)
-    }
-        
-    @IBAction func secenek4(_ sender: UIButton) {
-        checkAnswer(userAnswer: sender.currentTitle!)
-        
-    }
-    
-        
         func checkAnswer(userAnswer : String){
             let userGotItRight = questions[currentQuestionPozisyon].correctAnswer
             if(userAnswer == questions[currentQuestionPozisyon].answers[userGotItRight]){
-                var title : String
-                title = "Correct Answer"
                 noCorrect += 1
                 
             }else{
-                title = "Wrong Answer"
                 noCorrect -= 1
             }
             NextQuestion()
@@ -127,19 +113,16 @@ class ViewController: UIViewController {
             }
         }
         func setQuestion() {
-            flagView.image = questions[currentQuestionPozisyon].images
-            answer0.setTitle(questions[currentQuestionPozisyon], for: <#T##UIControl.State#>)
+            currentQuestion = questions[currentQuestionPozisyon]
+            flagView.image = currentQuestion?.images
+            aOption.setTitle(currentQuestion?.answers[0], for: .normal)
+            bOption.setTitle(currentQuestion?.answers[1], for: .normal)
+            cOption.setTitle(currentQuestion?.answers[2], for: .normal)
+            dOption.setTitle(currentQuestion?.answers[3], for: .normal)
                     }
-   
-    
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        currentQuestion = questions[0]
-        setQuestion()
-        
-        
-    }
+  
+       
+  
         
         
     }

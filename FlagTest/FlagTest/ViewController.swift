@@ -14,16 +14,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var bOption: UIButton!
     @IBOutlet weak var cOption: UIButton!
     @IBOutlet weak var dOption: UIButton!
-    @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var ProgressView: UIProgressView!
     
     var currentQuestion : Question?
     var currentQuestionPozisyon = 0
-    var noCorrect = 0
+    var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setQuestion()
+        UpdateUI()
     }
     
     @IBAction func secenek1(_ sender: UIButton) {
@@ -32,14 +33,13 @@ class ViewController: UIViewController {
         let userAnnswer = sender.currentTitle!
         if userAnnswer == userGotItRight {
             sender.backgroundColor = UIColor.green
-            
         }
         else{
             sender.backgroundColor = UIColor.red
         }
         checkAnswer(userAnswer: sender.currentTitle!)
         NextQuestion()
-        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: true)
     }
     @IBAction func secenek2(_ sender: UIButton) {
         let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
@@ -47,15 +47,13 @@ class ViewController: UIViewController {
         let userAnnswer = sender.currentTitle!
         if userAnnswer == userGotItRight {
             sender.backgroundColor = UIColor.green
-            
         }
         else{
             sender.backgroundColor = UIColor.red
         }
         checkAnswer(userAnswer: sender.currentTitle!)
-       
         NextQuestion()
-        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: true)
     }
     @IBAction func secenek3(_ sender: UIButton) {
         let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
@@ -63,36 +61,30 @@ class ViewController: UIViewController {
         let userAnnswer = sender.currentTitle!
         if userAnnswer == userGotItRight {
             sender.backgroundColor = UIColor.green
-            
         }
         else{
             sender.backgroundColor = UIColor.red
         }
         checkAnswer(userAnswer: sender.currentTitle!)
         NextQuestion()
-        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: true)
     }
-    
     @IBAction func secenek4(_ sender: UIButton) {
         let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
         let userGotItRight = questions[currentQuestionPozisyon].answers[RightAnswer]
         let userAnnswer = sender.currentTitle!
         if userAnnswer == userGotItRight {
             sender.backgroundColor = UIColor.green
-            
         }
         else{
             sender.backgroundColor = UIColor.red
         }
         checkAnswer(userAnswer: sender.currentTitle!)
         NextQuestion()
-        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: true)
 
         
     }
-    
-    
-   
     let questions = [
         Question(question: "Yukarıdaki bayrak aşağıdaki ülkelerin hangisinin bayrağıdır",
                  answers: ["Türkiye", "Estonya", "Filistin","Almanya"] ,
@@ -140,26 +132,21 @@ class ViewController: UIViewController {
                  correctAnswer: 1,
                  images: #imageLiteral(resourceName: "Us") )
     ]
-    
         func checkAnswer(userAnswer : String){
             let userGotItRight = questions[currentQuestionPozisyon].correctAnswer
             if(userAnswer == questions[currentQuestionPozisyon].answers[userGotItRight]){
-                noCorrect += 1
-                
-            }else{
-                noCorrect -= 1
+                score += 1
             }
             NextQuestion()
         }
         func NextQuestion(){
             
             if(currentQuestionPozisyon + 1 < questions.count){
-                
                 currentQuestionPozisyon += 1
-                currentQuestion = questions[currentQuestionPozisyon]
                 setQuestion()
             }else {
                 currentQuestionPozisyon = 0
+                score = 0
             }
         }
         func setQuestion() {
@@ -170,15 +157,24 @@ class ViewController: UIViewController {
             cOption.setTitle(currentQuestion?.answers[2], for: .normal)
             dOption.setTitle(currentQuestion?.answers[3], for: .normal)
                     }
-           
+    
+    func getProgress() -> Float {
+        let progress = Float(currentQuestionPozisyon) / Float(questions.count)
+        print(currentQuestionPozisyon)
+        return progress
+    }
+    
+    func getScore() -> Int {
+        return score
+    }
+
     @objc func UpdateUI(){
-        
         aOption.backgroundColor = UIColor.clear
         bOption.backgroundColor = UIColor.clear
         cOption.backgroundColor = UIColor.clear
         dOption.backgroundColor = UIColor.clear
+        ProgressView.progress = getProgress()
+        scoreLabel.text = "Score: \(getScore())"
     }
-        
-        
     }
 

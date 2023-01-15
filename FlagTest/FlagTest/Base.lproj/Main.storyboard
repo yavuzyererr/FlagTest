@@ -61,7 +61,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="secenek2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1GU-Kz-hZs"/>
+                                            <action selector="secenek2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="In0-vO-blm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcp-RE-iRD">
@@ -73,7 +73,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="secenek3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yo9-TX-bg0"/>
+                                            <action selector="secenek3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZb-7T-yLY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jc2-WD-Y1O">
@@ -85,7 +85,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="secenek4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Vo-kE-m5a"/>
+                                            <action selector="secenek4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cg7-Yy-xZZ"/>
                                         </connections>
                                     </button>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-zY-474">

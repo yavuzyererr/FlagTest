@@ -27,18 +27,68 @@ class ViewController: UIViewController {
     }
     
     @IBAction func secenek1(_ sender: UIButton) {
+        let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
+        let userGotItRight = questions[currentQuestionPozisyon].answers[RightAnswer]
+        let userAnnswer = sender.currentTitle!
+        if userAnnswer == userGotItRight {
+            sender.backgroundColor = UIColor.green
+            
+        }
+        else{
+            sender.backgroundColor = UIColor.red
+        }
         checkAnswer(userAnswer: sender.currentTitle!)
-        
+        NextQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
     }
     @IBAction func secenek2(_ sender: UIButton) {
+        let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
+        let userGotItRight = questions[currentQuestionPozisyon].answers[RightAnswer]
+        let userAnnswer = sender.currentTitle!
+        if userAnnswer == userGotItRight {
+            sender.backgroundColor = UIColor.green
+            
+        }
+        else{
+            sender.backgroundColor = UIColor.red
+        }
         checkAnswer(userAnswer: sender.currentTitle!)
+       
+        NextQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
     }
     @IBAction func secenek3(_ sender: UIButton) {
+        let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
+        let userGotItRight = questions[currentQuestionPozisyon].answers[RightAnswer]
+        let userAnnswer = sender.currentTitle!
+        if userAnnswer == userGotItRight {
+            sender.backgroundColor = UIColor.green
+            
+        }
+        else{
+            sender.backgroundColor = UIColor.red
+        }
         checkAnswer(userAnswer: sender.currentTitle!)
+        NextQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
     }
     
     @IBAction func secenek4(_ sender: UIButton) {
+        let RightAnswer = questions[currentQuestionPozisyon].correctAnswer
+        let userGotItRight = questions[currentQuestionPozisyon].answers[RightAnswer]
+        let userAnnswer = sender.currentTitle!
+        if userAnnswer == userGotItRight {
+            sender.backgroundColor = UIColor.green
+            
+        }
+        else{
+            sender.backgroundColor = UIColor.red
+        }
         checkAnswer(userAnswer: sender.currentTitle!)
+        NextQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
+
+        
     }
     
     
@@ -120,9 +170,14 @@ class ViewController: UIViewController {
             cOption.setTitle(currentQuestion?.answers[2], for: .normal)
             dOption.setTitle(currentQuestion?.answers[3], for: .normal)
                     }
-  
-       
-  
+           
+    @objc func UpdateUI(){
+        
+        aOption.backgroundColor = UIColor.clear
+        bOption.backgroundColor = UIColor.clear
+        cOption.backgroundColor = UIColor.clear
+        dOption.backgroundColor = UIColor.clear
+    }
         
         
     }
